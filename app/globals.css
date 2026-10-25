@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* Brand palette from brief — only these hues */
+:root {
+  --sand: #e0ddd5;
+  --navy: #123d5e;
+  --gold: #c2a04f;
+  --sage: #73766e;
+
+  /* Derived only from the four brand colors */
+  --sand-deep: color-mix(in srgb, var(--sand) 85%, var(--sage));
+  --navy-deep: color-mix(in srgb, var(--navy) 82%, black);
+  --gold-deep: color-mix(in srgb, var(--gold) 78%, var(--navy));
+  --cream: var(--sand);
+  --ink: var(--navy);
+  --muted: var(--sage);
+  --line: color-mix(in srgb, var(--sand) 55%, var(--sage));
+  --warn-bg: color-mix(in srgb, var(--sand) 82%, var(--gold));
+  --warn-ink: color-mix(in srgb, var(--navy) 70%, var(--gold));
+  --ok: color-mix(in srgb, var(--sage) 55%, var(--navy));
+  --err: color-mix(in srgb, var(--navy) 75%, var(--gold));
+}
+
+@theme inline {
+  --font-sans: var(--font-source-sans);
+  --font-display: var(--font-cinzel);
+  --color-sand: var(--sand);
+  --color-sand-deep: var(--sand-deep);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-sage: var(--sage);
+  --color-cream: var(--sand);
+  --color-ink: var(--navy);
+  --color-muted: var(--sage);
+  --color-line: var(--line);
+}
+
+@layer base {
+  body {
+    margin: 0;
+    color: var(--navy);
+    background: var(--sand);
+    overflow-x: hidden;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  img,
+  svg,
+  video {
+    max-width: 100%;
+  }
+}
+
+::selection {
+  background: color-mix(in srgb, var(--gold) 45%, var(--sand));
+  color: var(--navy);
+}
+
+/* Unlayered: beat Tailwind preflight `a { color: inherit }` */
+.btn-link[data-variant="navy"] {
+  color: var(--sand) !important;
+}
+.btn-link[data-variant="gold"] {
+  color: var(--navy) !important;
+}
+.btn-link[data-variant="outline"] {
+  color: var(--navy) !important;
+}
+.btn-link[data-variant="outline"]:hover {
+  color: var(--sand) !important;
+}
